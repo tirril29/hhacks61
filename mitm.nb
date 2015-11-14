@@ -1,0 +1,1281 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='WolframDesktop 10.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       161,          7]
+NotebookDataLength[     42425,       1271]
+NotebookOptionsPosition[     38252,       1115]
+NotebookOutlinePosition[     38612,       1131]
+CellTagsIndexPosition[     38569,       1128]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["HackHarvard 2015", "Title",
+ CellID->1],
+
+Cell["Team 61's Middle Man Application", "Subtitle",
+ CellID->2],
+
+Cell["A list for the users. ", "Text",
+ CellID->11],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"users", "=", "CloudPut", "[", "{", "}", "]"}]], "Input",
+ CellID->4],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"CloudObject", "[", 
+   TagBox[
+    ButtonBox[
+     PaneSelectorBox[{
+      False->"\<\"https://www.wolframcloud.com/objects/7161335c-fdd4-4845-\
+91db-ba3a61c98c3f\"\>", True->
+      StyleBox["\<\"https://www.wolframcloud.com/objects/7161335c-fdd4-4845-\
+91db-ba3a61c98c3f\"\>", "HyperlinkActive"]}, Dynamic[
+       CurrentValue["MouseOver"]],
+      BaseStyle->{"Hyperlink"},
+      FrameMargins->0,
+      ImageSize->Automatic],
+     BaseStyle->"Hyperlink",
+     ButtonData->{
+       URL[
+       "https://www.wolframcloud.com/objects/7161335c-fdd4-4845-91db-\
+ba3a61c98c3f"], None},
+     ButtonNote->
+      "https://www.wolframcloud.com/objects/7161335c-fdd4-4845-91db-\
+ba3a61c98c3f"],
+    Annotation[#, 
+     "https://www.wolframcloud.com/objects/7161335c-fdd4-4845-91db-\
+ba3a61c98c3f", "Hyperlink"]& ], "]"}],
+  CloudObject[
+  "https://www.wolframcloud.com/objects/7161335c-fdd4-4845-91db-ba3a61c98c3f"],
+  SelectWithContents->True]], "Output",
+ CellChangeTimes->{3.656515096743726*^9, 3.656532503360785*^9, 
+  3.656532676797304*^9}]
+}, Open  ]],
+
+Cell["A function to add an item to a cloud list. ", "Text",
+ CellID->13],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"addToCloudList", " ", "=", " ", 
+   RowBox[{"Function", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"i", ",", " ", "j"}], "}"}], ",", 
+     RowBox[{"CloudPut", "[", 
+      RowBox[{
+       RowBox[{"Append", "[", 
+        RowBox[{
+         RowBox[{"CloudGet", "[", "i", "]"}], ",", " ", "j"}], "]"}], ",", 
+       "i"}], "]"}]}], "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{
+  3.656532492825017*^9, {3.656532637170418*^9, 3.656532663790874*^9}},
+ CellID->14],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"newUserForm", " ", "=", " ", "FormFunction", "[", "{", 
+  "\"\<Name\>\"", "\[Rule]", "\"\<String\>\"", ",", " ", "\"\<Email\>\"", 
+  "\[Rule]", "\"\<String\>\"", "}", ",", " ", "addToCloudList", "[", "users", 
+  ",", " ", "Association", "[", "{", "\"\<Name\>\"", "\[Rule]", "#Name", ",", 
+  "\"\<Email\>\"", "\[Rule]", "#Email", "}", "]", "]", "&", "]", ";", " ", 
+  "Print", "[", "\"\<Ok\>\"", "]"}]], "Input",
+ CellID->231],
+
+Cell[BoxData["\<\"Ok\"\>"], "Print",
+ CellChangeTimes->{3.656532503739834*^9, 3.656532677131637*^9}]
+}, Open  ]],
+
+Cell["An API function that takes URL/&Name=\"\"&Email=\"\"", "Text",
+ CellID->506],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"newUserAPI", " ", "=", " ", 
+  RowBox[{"APIFunction", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"\"\<Name\>\"", "\[Rule]", "\"\<String\>\""}], ",", " ", 
+      RowBox[{"\"\<Email\>\"", "\[Rule]", "\"\<String\>\""}]}], "}"}], ",", 
+    " ", 
+    RowBox[{
+     RowBox[{"addToCloudList", "[", 
+      RowBox[{"users", ",", " ", 
+       RowBox[{"Association", "[", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"\"\<Name\>\"", "\[Rule]", "#Name"}], ",", 
+          RowBox[{"\"\<Email\>\"", "\[Rule]", "#Email"}]}], "}"}], "]"}]}], 
+      "]"}], "&"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.6565145814591503`*^9, 3.656514583913344*^9}, {
+  3.656514915852311*^9, 3.656514935155429*^9}, {3.656515042076866*^9, 
+  3.65651506190805*^9}},
+ CellID->489],
+
+Cell[BoxData[
+ RowBox[{"APIFunction", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\<\"Name\"\>", "\[Rule]", "\<\"String\"\>"}], ",", 
+     RowBox[{"\<\"Email\"\>", "\[Rule]", "\<\"String\"\>"}]}], "}"}], ",", 
+   RowBox[{
+    RowBox[{"addToCloudList", "[", 
+     RowBox[{"users", ",", 
+      RowBox[{"Association", "[", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"\<\"Name\"\>", "\[Rule]", "#Name"}], ",", 
+         RowBox[{"\<\"Email\"\>", "\[Rule]", "#Email"}]}], "}"}], "]"}]}], 
+     "]"}], "&"}]}], "]"}]], "Output",
+ CellChangeTimes->{3.656515064032619*^9, 3.65651516534011*^9, 
+  3.656532503771761*^9, 3.65653267717618*^9}]
+}, Open  ]],
+
+Cell["Cloud Deployment", "Text",
+ CellID->510],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"CloudDeploy", "[", "newUserAPI", "]"}]], "Input",
+ CellID->495],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"CloudObject", "[", 
+   TagBox[
+    ButtonBox[
+     PaneSelectorBox[{
+      False->"\<\"https://www.wolframcloud.com/objects/6457e056-bf28-4983-\
+ae00-79a6d006c1e6\"\>", True->
+      StyleBox["\<\"https://www.wolframcloud.com/objects/6457e056-bf28-4983-\
+ae00-79a6d006c1e6\"\>", "HyperlinkActive"]}, Dynamic[
+       CurrentValue["MouseOver"]],
+      BaseStyle->{"Hyperlink"},
+      FrameMargins->0,
+      ImageSize->Automatic],
+     BaseStyle->"Hyperlink",
+     ButtonData->{
+       URL[
+       "https://www.wolframcloud.com/objects/6457e056-bf28-4983-ae00-\
+79a6d006c1e6"], None},
+     ButtonNote->
+      "https://www.wolframcloud.com/objects/6457e056-bf28-4983-ae00-\
+79a6d006c1e6"],
+    Annotation[#, 
+     "https://www.wolframcloud.com/objects/6457e056-bf28-4983-ae00-\
+79a6d006c1e6", "Hyperlink"]& ], "]"}],
+  CloudObject[
+  "https://www.wolframcloud.com/objects/6457e056-bf28-4983-ae00-79a6d006c1e6"],
+  SelectWithContents->True]], "Output",
+ CellChangeTimes->{3.656515073646123*^9, 3.656515170831818*^9, 
+  3.6565325054140463`*^9, 3.656532678673177*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"\n", 
+  RowBox[{"CloudDeploy", "[", "newUserForm", "]"}]}]], "Input",
+ CellID->537],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"CloudObject", "[", 
+   TagBox[
+    ButtonBox[
+     PaneSelectorBox[{
+      False->"\<\"https://www.wolframcloud.com/objects/81a89b90-8738-4ed6-\
+bfc9-188b5a956285\"\>", True->
+      StyleBox["\<\"https://www.wolframcloud.com/objects/81a89b90-8738-4ed6-\
+bfc9-188b5a956285\"\>", "HyperlinkActive"]}, Dynamic[
+       CurrentValue["MouseOver"]],
+      BaseStyle->{"Hyperlink"},
+      FrameMargins->0,
+      ImageSize->Automatic],
+     BaseStyle->"Hyperlink",
+     ButtonData->{
+       URL[
+       "https://www.wolframcloud.com/objects/81a89b90-8738-4ed6-bfc9-\
+188b5a956285"], None},
+     ButtonNote->
+      "https://www.wolframcloud.com/objects/81a89b90-8738-4ed6-bfc9-\
+188b5a956285"],
+    Annotation[#, 
+     "https://www.wolframcloud.com/objects/81a89b90-8738-4ed6-bfc9-\
+188b5a956285", "Hyperlink"]& ], "]"}],
+  CloudObject[
+  "https://www.wolframcloud.com/objects/81a89b90-8738-4ed6-bfc9-188b5a956285"],
+  SelectWithContents->True]], "Output",
+ CellChangeTimes->{3.656532506360692*^9, 3.6565326795327682`*^9}]
+}, Open  ]],
+
+Cell["State of the database:", "Text",
+ CellID->508],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"CloudGet", "[", "users", "]"}]], "Input",
+ CellID->584],
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Output",
+ CellChangeTimes->{3.656515090987986*^9, 3.6565151989329157`*^9, 
+  3.65653250649128*^9, 3.656532679663645*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Disputes", "Section",
+ CellChangeTimes->{{3.65651341949741*^9, 3.656513442157714*^9}},
+ CellID->512],
+
+Cell["List of disputes:", "Text",
+ CellChangeTimes->{{3.656513450143443*^9, 3.65651345906986*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"disputes", "=", 
+  RowBox[{"CloudPut", "[", 
+   RowBox[{"{", "}"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.6565134720948973`*^9, 3.656513490860961*^9}, {
+  3.656515454002839*^9, 3.656515455913911*^9}}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"CloudObject", "[", 
+   TagBox[
+    ButtonBox[
+     PaneSelectorBox[{
+      False->"\<\"https://www.wolframcloud.com/objects/6bbcd0ba-0b46-48d0-\
+b603-941965b1090c\"\>", True->
+      StyleBox["\<\"https://www.wolframcloud.com/objects/6bbcd0ba-0b46-48d0-\
+b603-941965b1090c\"\>", "HyperlinkActive"]}, Dynamic[
+       CurrentValue["MouseOver"]],
+      BaseStyle->{"Hyperlink"},
+      FrameMargins->0,
+      ImageSize->Automatic],
+     BaseStyle->"Hyperlink",
+     ButtonData->{
+       URL[
+       "https://www.wolframcloud.com/objects/6bbcd0ba-0b46-48d0-b603-\
+941965b1090c"], None},
+     ButtonNote->
+      "https://www.wolframcloud.com/objects/6bbcd0ba-0b46-48d0-b603-\
+941965b1090c"],
+    Annotation[#, 
+     "https://www.wolframcloud.com/objects/6bbcd0ba-0b46-48d0-b603-\
+941965b1090c", "Hyperlink"]& ], "]"}],
+  CloudObject[
+  "https://www.wolframcloud.com/objects/6bbcd0ba-0b46-48d0-b603-941965b1090c"],
+  SelectWithContents->True]], "Output",
+ CellChangeTimes->{3.656516089533422*^9, 3.6565162200791607`*^9, 
+  3.656531602208089*^9, 3.656532508321136*^9, 3.65653268120562*^9}]
+}, Open  ]],
+
+Cell["Initiate a counter:", "Text",
+ CellChangeTimes->{{3.656515572641387*^9, 3.6565155768311453`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"counter", "=", 
+  RowBox[{"CloudPut", "[", "Integer", "]"}]}]], "Input",
+ CellChangeTimes->{{3.656515462174035*^9, 3.656515478536338*^9}}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"CloudObject", "[", 
+   TagBox[
+    ButtonBox[
+     PaneSelectorBox[{
+      False->"\<\"https://www.wolframcloud.com/objects/d491e46e-9127-440a-\
+8872-4a5acb0ba827\"\>", True->
+      StyleBox["\<\"https://www.wolframcloud.com/objects/d491e46e-9127-440a-\
+8872-4a5acb0ba827\"\>", "HyperlinkActive"]}, Dynamic[
+       CurrentValue["MouseOver"]],
+      BaseStyle->{"Hyperlink"},
+      FrameMargins->0,
+      ImageSize->Automatic],
+     BaseStyle->"Hyperlink",
+     ButtonData->{
+       URL[
+       "https://www.wolframcloud.com/objects/d491e46e-9127-440a-8872-\
+4a5acb0ba827"], None},
+     ButtonNote->
+      "https://www.wolframcloud.com/objects/d491e46e-9127-440a-8872-\
+4a5acb0ba827"],
+    Annotation[#, 
+     "https://www.wolframcloud.com/objects/d491e46e-9127-440a-8872-\
+4a5acb0ba827", "Hyperlink"]& ], "]"}],
+  CloudObject[
+  "https://www.wolframcloud.com/objects/d491e46e-9127-440a-8872-4a5acb0ba827"],
+  SelectWithContents->True]], "Output",
+ CellChangeTimes->{3.65651548539187*^9, 3.656532509850563*^9, 
+  3.656532683049634*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"CloudPut", "[", 
+  RowBox[{"0", ",", "counter"}], "]"}]], "Input",
+ CellChangeTimes->{{3.656515604017948*^9, 3.65651561173024*^9}, {
+  3.656516097020254*^9, 3.656516097355315*^9}}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"CloudObject", "[", 
+   TagBox[
+    ButtonBox[
+     PaneSelectorBox[{
+      False->"\<\"https://www.wolframcloud.com/objects/d491e46e-9127-440a-\
+8872-4a5acb0ba827\"\>", True->
+      StyleBox["\<\"https://www.wolframcloud.com/objects/d491e46e-9127-440a-\
+8872-4a5acb0ba827\"\>", "HyperlinkActive"]}, Dynamic[
+       CurrentValue["MouseOver"]],
+      BaseStyle->{"Hyperlink"},
+      FrameMargins->0,
+      ImageSize->Automatic],
+     BaseStyle->"Hyperlink",
+     ButtonData->{
+       URL[
+       "https://www.wolframcloud.com/objects/d491e46e-9127-440a-8872-\
+4a5acb0ba827"], None},
+     ButtonNote->
+      "https://www.wolframcloud.com/objects/d491e46e-9127-440a-8872-\
+4a5acb0ba827"],
+    Annotation[#, 
+     "https://www.wolframcloud.com/objects/d491e46e-9127-440a-8872-\
+4a5acb0ba827", "Hyperlink"]& ], "]"}],
+  CloudObject[
+  "https://www.wolframcloud.com/objects/d491e46e-9127-440a-8872-4a5acb0ba827"],
+  SelectWithContents->True]], "Output",
+ CellChangeTimes->{3.65651561312324*^9, 3.656516100360759*^9, 
+  3.6565325110075197`*^9, 3.656532684156324*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"increment", "=", 
+  RowBox[{"Function", "[", 
+   RowBox[{
+    RowBox[{"{", "c", "}"}], ",", 
+    RowBox[{
+     RowBox[{"CloudPut", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"CloudGet", "[", "c", "]"}], "+", "1"}], ",", "c"}], "]"}], 
+     ";", 
+     RowBox[{"CloudGet", "[", "c", "]"}]}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.6565156199003277`*^9, 3.656515691661419*^9}, 
+   3.656515782096918*^9}],
+
+Cell[BoxData[
+ RowBox[{"Function", "[", 
+  RowBox[{
+   RowBox[{"{", "c", "}"}], ",", 
+   RowBox[{
+    RowBox[{"CloudPut", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"CloudGet", "[", "c", "]"}], "+", "1"}], ",", "c"}], "]"}], 
+    ";", 
+    RowBox[{"CloudGet", "[", "c", "]"}]}]}], "]"}]], "Output",
+ CellChangeTimes->{3.6565157845575123`*^9, 3.656532511064933*^9, 
+  3.6565326842014313`*^9}]
+}, Open  ]],
+
+Cell["Make A Dispute", "Text",
+ CellChangeTimes->{{3.656513428537539*^9, 3.656513436134493*^9}, {
+   3.656513502309973*^9, 3.6565135049008007`*^9}, {3.656513548251233*^9, 
+   3.6565135529630632`*^9}, 3.656515223712181*^9}],
+
+Cell["Dispute Creation API", "Text",
+ CellChangeTimes->{{3.656514064727942*^9, 3.656514077942665*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(", 
+   RowBox[{"newDisputeAPI", "=", 
+    RowBox[{"APIFunction", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"\"\<NameA\>\"", "\[Rule]", "\"\<String\>\""}], ",", 
+        RowBox[{"\"\<NameB\>\"", "\[Rule]", "\"\<String\>\""}], ",", 
+        RowBox[{"\"\<DescA\>\"", "\[Rule]", "\"\<String\>\""}], ",", 
+        RowBox[{"\"\<DescB\>\"", "\[Rule]", " ", "\"\<String\>\""}]}], "}"}], 
+      ",", 
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"addToCloudList", "[", 
+          RowBox[{"disputes", ",", 
+           RowBox[{"Association", "[", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"\"\<id\>\"", "\[Rule]", " ", 
+               RowBox[{"increment", "[", "counter", "]"}]}], ",", 
+              RowBox[{"\"\<NameA\>\"", "\[Rule]", "#NameA"}], ",", 
+              RowBox[{"\"\<NameB\>\"", "\[Rule]", "#NameB"}], ",", 
+              RowBox[{"\"\<DescA\>\"", "\[Rule]", "#DescA"}], ",", 
+              RowBox[{"\"\<DescB\>\"", "\[Rule]", "#DescB"}], ",", 
+              RowBox[{"\"\<NameM\>\"", "\[Rule]", "\"\<Placeholder\>\""}]}], 
+             "}"}], "]"}]}], "]"}], ";", 
+         RowBox[{"Style", "[", 
+          RowBox[{"\"\<Thank you!\>\"", ",", " ", "100"}], "]"}]}], ")"}], 
+       "&"}], ",", " ", "\"\<HTML\>\""}], "]"}]}], ")"}], ";", 
+  RowBox[{"Print", "[", "\"\<okay\>\"", "]"}]}]], "Input",
+ CellChangeTimes->{{3.656514087083597*^9, 3.6565142704317417`*^9}, 
+   3.65651469923076*^9, {3.65651479527707*^9, 3.656514810028407*^9}, 
+   3.656515353919301*^9, {3.656516017129973*^9, 3.656516033989554*^9}, {
+   3.656517255335252*^9, 3.656517265326188*^9}, {3.65651729592314*^9, 
+   3.656517349857965*^9}, {3.656517708150247*^9, 3.656517732212772*^9}, {
+   3.6565177758752728`*^9, 3.656517849081802*^9}, 3.656517884947063*^9, {
+   3.656517952391205*^9, 3.656517959637116*^9}, {3.65652000616532*^9, 
+   3.6565200073722486`*^9}, {3.6565200413730717`*^9, 3.656520053722828*^9}, {
+   3.656520098764724*^9, 3.656520138257547*^9}, {3.6565201687794456`*^9, 
+   3.656520172465221*^9}, {3.656520255988573*^9, 3.656520269938801*^9}, {
+   3.656520320839017*^9, 3.656520336324616*^9}, {3.656520381700605*^9, 
+   3.656520383858444*^9}, {3.6565204407714663`*^9, 3.65652044279312*^9}, {
+   3.656520483526721*^9, 3.656520487036511*^9}, {3.656520535276045*^9, 
+   3.6565205364754477`*^9}}],
+
+Cell[BoxData["\<\"okay\"\>"], "Print",
+ CellChangeTimes->{3.656520342253145*^9, 3.6565203864932632`*^9, 
+  3.656520491924735*^9, 3.6565205383929853`*^9, 3.6565324179391212`*^9, 
+  3.656532511104391*^9, 3.656532684223939*^9}]
+}, Open  ]],
+
+Cell["Dispute Creation Form", "Text",
+ CellChangeTimes->{{3.656530748605706*^9, 3.6565307541647997`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"newDisputeForm", "=", 
+   RowBox[{"FormFunction", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"\"\<NameA\>\"", "\[Rule]", "\"\<String\>\""}], ",", 
+       RowBox[{"\"\<NameB\>\"", "\[Rule]", "\"\<String\>\""}], ",", 
+       RowBox[{"\"\<DescA\>\"", "\[Rule]", "\"\<String\>\""}], ",", 
+       RowBox[{"\"\<DescB\>\"", "\[Rule]", " ", "\"\<String\>\""}]}], "}"}], 
+     ",", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"addToCloudList", "[", 
+         RowBox[{"disputes", ",", 
+          RowBox[{"Association", "[", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"\"\<id\>\"", "\[Rule]", " ", 
+              RowBox[{"increment", "[", "counter", "]"}]}], ",", 
+             RowBox[{"\"\<NameA\>\"", "\[Rule]", "#NameA"}], ",", 
+             RowBox[{"\"\<NameB\>\"", "\[Rule]", "#NameB"}], ",", 
+             RowBox[{"\"\<DescA\>\"", "\[Rule]", "#DescA"}], ",", 
+             RowBox[{"\"\<DescB\>\"", "\[Rule]", "#DescB"}], ",", 
+             RowBox[{"\"\<NameM\>\"", "\[Rule]", "\"\<Placeholder\>\""}]}], 
+            "}"}], "]"}]}], "]"}], ";", 
+        RowBox[{"Style", "[", 
+         RowBox[{"\"\<Thank you!\>\"", ",", " ", "100"}], "]"}]}], ")"}], 
+      "&"}], ",", "\"\<HTML\>\"", ",", 
+     RowBox[{"AppearanceRules", "\[Rule]", 
+      RowBox[{"<|", 
+       RowBox[{
+        RowBox[{"\"\<Title\>\"", "\[Rule]", " ", "\"\<Dispute Form\>\""}], 
+        ",", 
+        RowBox[{
+        "\"\<Description\>\"", "\[Rule]", " ", 
+         "\"\<Describe the situation.\>\""}]}], "|>"}]}]}], "]"}]}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.656530385591754*^9, 3.65653056045122*^9}, {
+   3.656530591522438*^9, 3.656530592810161*^9}, {3.656530718338221*^9, 
+   3.6565307314481*^9}, 3.656530838023745*^9}],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.656517888571302*^9, 3.656517890785943*^9}}],
+
+Cell["\<\
+View a dispute:
+Dispute Viewing API\
+\>", "Text",
+ CellChangeTimes->{{3.656516312041215*^9, 3.656516320647853*^9}, {
+  3.656522626279483*^9, 3.656522634455345*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"viewDisputeAPI", "=", 
+  RowBox[{"APIFunction", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"\"\<id\>\"", "\[Rule]", " ", "Integer"}], "}"}], ",", 
+    RowBox[{
+     RowBox[{"Select", "[", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"CloudGet", "[", "disputes", "]"}], ",", " ", 
+       RowBox[{"Function", "[", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"{", "x", "}"}], ",", 
+         RowBox[{
+          RowBox[{"x", "[", 
+           RowBox[{"[", "\"\<id\>\"", "]"}], "]"}], "\[Equal]", "#id"}]}], 
+        "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", "]"}], "&"}]}],
+    "\[IndentingNewLine]", "]"}]}]], "Input",
+ CellChangeTimes->{{3.656516331890869*^9, 3.656516369353065*^9}, {
+   3.656516415061454*^9, 3.656516420311844*^9}, {3.656520588539678*^9, 
+   3.656520660677518*^9}, 3.656520691398316*^9, {3.656520902252057*^9, 
+   3.65652090464375*^9}, {3.656525607022295*^9, 3.6565256075087147`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"APIFunction", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"\<\"id\"\>", "\[Rule]", "Integer"}], "}"}], ",", 
+   RowBox[{
+    RowBox[{"Select", "[", 
+     RowBox[{
+      RowBox[{"CloudGet", "[", "disputes", "]"}], ",", 
+      RowBox[{"Function", "[", 
+       RowBox[{
+        RowBox[{"{", "x", "}"}], ",", 
+        RowBox[{
+         RowBox[{
+         "x", "\[LeftDoubleBracket]", "\<\"id\"\>", "\[RightDoubleBracket]"}],
+          "\[Equal]", "#id"}]}], "]"}]}], "]"}], "&"}]}], "]"}]], "Output",
+ CellChangeTimes->{3.6565206938736277`*^9, 3.656520907628357*^9, 
+  3.656525609296459*^9, 3.656532511194233*^9, 3.656532684266333*^9}]
+}, Open  ]],
+
+Cell["\<\
+Arbiting a Dispute:
+Form:\
+\>", "Text",
+ CellChangeTimes->{{3.6565226521598*^9, 3.656522660798683*^9}, {
+  3.6565240789881573`*^9, 3.656524080227162*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"slowArbitForm", " ", "=", " ", 
+   RowBox[{"Function", "[", 
+    RowBox[{
+     RowBox[{"{", "dispute", "}"}], ",", 
+     RowBox[{"FormFunction", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"\"\<x\>\"", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"dispute", "[", 
+             RowBox[{"[", "\"\<DescA\>\"", "]"}], "]"}], "\[Rule]", " ", 
+            RowBox[{"dispute", "[", 
+             RowBox[{"[", "\"\<NameA\>\"", "]"}], "]"}]}], ",", 
+           RowBox[{
+            RowBox[{"dispute", "[", 
+             RowBox[{"[", "\"\<DescB\>\"", "]"}], "]"}], "\[Rule]", " ", 
+            RowBox[{"dispute", "[", 
+             RowBox[{"[", "\"\<NameA\>\"", "]"}], "]"}]}]}], "}"}]}], "}"}], 
+       ",", 
+       RowBox[{
+        RowBox[{"Style", "[", 
+         RowBox[{"#x", ",", "200"}], "]"}], "&"}], 
+       RowBox[{"(*", 
+        RowBox[{"EMAIL", " ", "CODE", " ", "HERE"}], "*)"}], ",", 
+       RowBox[{"AppearanceRules", "\[Rule]", 
+        RowBox[{"Association", "[", 
+         RowBox[{"\"\<Title\>\"", "\[Rule]", "\"\<Chose a side\>\""}], 
+         "]"}]}]}], "]"}]}], "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.656529745057989*^9, 3.656529837580566*^9}, {
+   3.6565299423168287`*^9, 3.656529946748495*^9}, {3.656530008091763*^9, 
+   3.656530091667161*^9}, {3.656530220257248*^9, 3.656530230495304*^9}, 
+   3.656530297459998*^9, {3.656530332138727*^9, 3.656530346401395*^9}, {
+   3.65653091430112*^9, 3.6565309876484957`*^9}, {3.656531041658072*^9, 
+   3.656531053016164*^9}, {3.656531279194481*^9, 3.656531414407625*^9}, {
+   3.656531462824183*^9, 3.6565314813574123`*^9}, {3.656532763767231*^9, 
+   3.656532769501465*^9}, {3.6565329054950733`*^9, 3.656532905718759*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"slowArbitForm", "[", 
+  RowBox[{
+   RowBox[{"CloudGet", "[", "disputes", "]"}], "[", 
+   RowBox[{"[", "1", "]"}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.656532916546689*^9, 3.656532936132695*^9}}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   TagBox["FormFunction",
+    "SummaryHead"], "[", 
+   PanelBox[
+    DynamicModuleBox[{Forms`Format`PackagePrivate`values$$ = Association[
+     "x" -> "Avery"]}, 
+     DynamicBox[ToBoxes[
+       If[
+        ValueQ[Forms`Format`PackagePrivate`values$$], 
+        Column[{
+          Panel[
+           Style[
+            (Style[
+             Slot["x"], 200]& )[Forms`Format`PackagePrivate`values$$], 
+            "Output", "StandardForm"], Background -> White], 
+          Item[
+           Row[{
+             Spacer[0], 
+             Button["Back", 
+              Clear[Forms`Format`PackagePrivate`values$$]]}], Alignment -> 
+           Right]}, Alignment -> Right], 
+        Forms`PackageScope`bindForm[
+         Forms`PackageScope`changeAppearanceRule[
+          FormObject[
+           Association[
+           "x" -> Association[
+             "Interpreter" -> {
+               "Avocado" -> "Avery", "Abeergeen" -> "Avery"}]], 
+           AppearanceRules -> Association["Title" -> "Chose a side"]], 
+          "CancelLabel" -> None], Forms`Format`PackagePrivate`values$$]], 
+       StandardForm],
+      ImageSizeCache->{618., {122.42919921875, 127.57080078125}}],
+     DynamicModuleValues:>{}]], "]"}],
+  FormFunction[
+   FormObject[
+    Association[
+    "x" -> Association[
+      "Interpreter" -> {"Avocado" -> "Avery", "Abeergeen" -> "Avery"}]], 
+    AppearanceRules -> Association["Title" -> "Chose a side"]], Style[
+    Slot["x"], 200]& ],
+  Editable->False,
+  SelectWithContents->True,
+  Selectable->False]], "Output",
+ CellChangeTimes->{3.6565329376910563`*^9}]
+}, Open  ]],
+
+Cell["Cloud Deployments", "Text",
+ CellChangeTimes->{{3.656516297865464*^9, 3.656516301096223*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"CloudDeploy", "[", "newDisputeAPI", "]"}]], "Input",
+ CellChangeTimes->{{3.656514294572481*^9, 3.656514301063878*^9}, {
+  3.656530663153757*^9, 3.6565306636186733`*^9}, {3.656530778355934*^9, 
+  3.6565307814469547`*^9}}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"CloudObject", "[", 
+   TagBox[
+    ButtonBox[
+     PaneSelectorBox[{
+      False->"\<\"https://www.wolframcloud.com/objects/7b2c9cf8-c91f-4f69-\
+af9b-b48424d7d060\"\>", True->
+      StyleBox["\<\"https://www.wolframcloud.com/objects/7b2c9cf8-c91f-4f69-\
+af9b-b48424d7d060\"\>", "HyperlinkActive"]}, Dynamic[
+       CurrentValue["MouseOver"]],
+      BaseStyle->{"Hyperlink"},
+      FrameMargins->0,
+      ImageSize->Automatic],
+     BaseStyle->"Hyperlink",
+     ButtonData->{
+       URL[
+       "https://www.wolframcloud.com/objects/7b2c9cf8-c91f-4f69-af9b-\
+b48424d7d060"], None},
+     ButtonNote->
+      "https://www.wolframcloud.com/objects/7b2c9cf8-c91f-4f69-af9b-\
+b48424d7d060"],
+    Annotation[#, 
+     "https://www.wolframcloud.com/objects/7b2c9cf8-c91f-4f69-af9b-\
+b48424d7d060", "Hyperlink"]& ], "]"}],
+  CloudObject[
+  "https://www.wolframcloud.com/objects/7b2c9cf8-c91f-4f69-af9b-b48424d7d060"],
+  SelectWithContents->True]], "Output",
+ CellChangeTimes->{3.6565306662609167`*^9, 3.656530763888618*^9, 
+  3.656532422517095*^9, 3.656532513051721*^9, 3.656532685907604*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"CloudDeploy", "[", "newDisputeForm", "]"}]], "Input"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"CloudObject", "[", 
+   TagBox[
+    ButtonBox[
+     PaneSelectorBox[{
+      False->"\<\"https://www.wolframcloud.com/objects/04a41c65-3e84-4fd3-\
+880a-d2202bc2a27a\"\>", True->
+      StyleBox["\<\"https://www.wolframcloud.com/objects/04a41c65-3e84-4fd3-\
+880a-d2202bc2a27a\"\>", "HyperlinkActive"]}, Dynamic[
+       CurrentValue["MouseOver"]],
+      BaseStyle->{"Hyperlink"},
+      FrameMargins->0,
+      ImageSize->Automatic],
+     BaseStyle->"Hyperlink",
+     ButtonData->{
+       URL[
+       "https://www.wolframcloud.com/objects/04a41c65-3e84-4fd3-880a-\
+d2202bc2a27a"], None},
+     ButtonNote->
+      "https://www.wolframcloud.com/objects/04a41c65-3e84-4fd3-880a-\
+d2202bc2a27a"],
+    Annotation[#, 
+     "https://www.wolframcloud.com/objects/04a41c65-3e84-4fd3-880a-\
+d2202bc2a27a", "Hyperlink"]& ], "]"}],
+  CloudObject[
+  "https://www.wolframcloud.com/objects/04a41c65-3e84-4fd3-880a-d2202bc2a27a"],
+  SelectWithContents->True]], "Output",
+ CellChangeTimes->{3.656532226930427*^9, 3.6565323708106127`*^9, 
+  3.656532514270917*^9, 3.6565326867807007`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"CloudObject", "[", 
+   TagBox[
+    ButtonBox[
+     PaneSelectorBox[{
+      False->"\<\"https://www.wolframcloud.com/objects/049010fe-086a-4ba7-\
+8d89-152791449c59\"\>", True->
+      StyleBox["\<\"https://www.wolframcloud.com/objects/049010fe-086a-4ba7-\
+8d89-152791449c59\"\>", "HyperlinkActive"]}, Dynamic[
+       CurrentValue["MouseOver"]],
+      BaseStyle->{"Hyperlink"},
+      FrameMargins->0,
+      ImageSize->Automatic],
+     BaseStyle->"Hyperlink",
+     ButtonData->{
+       URL[
+       "https://www.wolframcloud.com/objects/049010fe-086a-4ba7-8d89-\
+152791449c59"], None},
+     ButtonNote->
+      "https://www.wolframcloud.com/objects/049010fe-086a-4ba7-8d89-\
+152791449c59"],
+    Annotation[#, 
+     "https://www.wolframcloud.com/objects/049010fe-086a-4ba7-8d89-\
+152791449c59", "Hyperlink"]& ], "]"}],
+  CloudObject[
+  "https://www.wolframcloud.com/objects/049010fe-086a-4ba7-8d89-152791449c59"],
+  SelectWithContents->True]], "Input",
+ CellChangeTimes->{{3.656520697884534*^9, 3.656520701251912*^9}}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"CloudObject", "[", 
+   TagBox[
+    ButtonBox[
+     PaneSelectorBox[{
+      False->"\<\"https://www.wolframcloud.com/objects/049010fe-086a-4ba7-\
+8d89-152791449c59\"\>", True->
+      StyleBox["\<\"https://www.wolframcloud.com/objects/049010fe-086a-4ba7-\
+8d89-152791449c59\"\>", "HyperlinkActive"]}, Dynamic[
+       CurrentValue["MouseOver"]],
+      BaseStyle->{"Hyperlink"},
+      FrameMargins->0,
+      ImageSize->Automatic],
+     BaseStyle->"Hyperlink",
+     ButtonData->{
+       URL[
+       "https://www.wolframcloud.com/objects/049010fe-086a-4ba7-8d89-\
+152791449c59"], None},
+     ButtonNote->
+      "https://www.wolframcloud.com/objects/049010fe-086a-4ba7-8d89-\
+152791449c59"],
+    Annotation[#, 
+     "https://www.wolframcloud.com/objects/049010fe-086a-4ba7-8d89-\
+152791449c59", "Hyperlink"]& ], "]"}],
+  CloudObject[
+  "https://www.wolframcloud.com/objects/049010fe-086a-4ba7-8d89-152791449c59"],
+  SelectWithContents->True]], "Output",
+ CellChangeTimes->{3.6565325146016006`*^9, 3.656532686807314*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"CloudDeploy", "[", "viewDispute", "]"}]], "Input",
+ CellChangeTimes->{{3.6565207045677977`*^9, 3.65652071574002*^9}, {
+  3.6565306270016108`*^9, 3.6565306607791767`*^9}}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"CloudObject", "[", 
+   TagBox[
+    ButtonBox[
+     PaneSelectorBox[{
+      False->"\<\"https://www.wolframcloud.com/objects/3ef6f445-9096-48b2-\
+b4ae-4b5d45938785\"\>", True->
+      StyleBox["\<\"https://www.wolframcloud.com/objects/3ef6f445-9096-48b2-\
+b4ae-4b5d45938785\"\>", "HyperlinkActive"]}, Dynamic[
+       CurrentValue["MouseOver"]],
+      BaseStyle->{"Hyperlink"},
+      FrameMargins->0,
+      ImageSize->Automatic],
+     BaseStyle->"Hyperlink",
+     ButtonData->{
+       URL[
+       "https://www.wolframcloud.com/objects/3ef6f445-9096-48b2-b4ae-\
+4b5d45938785"], None},
+     ButtonNote->
+      "https://www.wolframcloud.com/objects/3ef6f445-9096-48b2-b4ae-\
+4b5d45938785"],
+    Annotation[#, 
+     "https://www.wolframcloud.com/objects/3ef6f445-9096-48b2-b4ae-\
+4b5d45938785", "Hyperlink"]& ], "]"}],
+  CloudObject[
+  "https://www.wolframcloud.com/objects/3ef6f445-9096-48b2-b4ae-4b5d45938785"],
+  SelectWithContents->True]], "Output",
+ CellChangeTimes->{3.6565325160266657`*^9, 3.656532688292904*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"CloudObject", "[", 
+   TagBox[
+    ButtonBox[
+     PaneSelectorBox[{
+      False->"\<\"https://www.wolframcloud.com/objects/636cf970-0092-4bc1-\
+a812-3a5f82e9189a\"\>", True->
+      StyleBox["\<\"https://www.wolframcloud.com/objects/636cf970-0092-4bc1-\
+a812-3a5f82e9189a\"\>", "HyperlinkActive"]}, Dynamic[
+       CurrentValue["MouseOver"]],
+      BaseStyle->{"Hyperlink"},
+      FrameMargins->0,
+      ImageSize->Automatic],
+     BaseStyle->"Hyperlink",
+     ButtonData->{
+       URL[
+       "https://www.wolframcloud.com/objects/636cf970-0092-4bc1-a812-\
+3a5f82e9189a"], None},
+     ButtonNote->
+      "https://www.wolframcloud.com/objects/636cf970-0092-4bc1-a812-\
+3a5f82e9189a"],
+    Annotation[#, 
+     "https://www.wolframcloud.com/objects/636cf970-0092-4bc1-a812-\
+3a5f82e9189a", "Hyperlink"]& ], "]"}],
+  CloudObject[
+  "https://www.wolframcloud.com/objects/636cf970-0092-4bc1-a812-3a5f82e9189a"],
+  SelectWithContents->True]], "Input",
+ CellChangeTimes->{{3.6565243304097424`*^9, 3.6565243324223137`*^9}}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"CloudObject", "[", 
+   TagBox[
+    ButtonBox[
+     PaneSelectorBox[{
+      False->"\<\"https://www.wolframcloud.com/objects/636cf970-0092-4bc1-\
+a812-3a5f82e9189a\"\>", True->
+      StyleBox["\<\"https://www.wolframcloud.com/objects/636cf970-0092-4bc1-\
+a812-3a5f82e9189a\"\>", "HyperlinkActive"]}, Dynamic[
+       CurrentValue["MouseOver"]],
+      BaseStyle->{"Hyperlink"},
+      FrameMargins->0,
+      ImageSize->Automatic],
+     BaseStyle->"Hyperlink",
+     ButtonData->{
+       URL[
+       "https://www.wolframcloud.com/objects/636cf970-0092-4bc1-a812-\
+3a5f82e9189a"], None},
+     ButtonNote->
+      "https://www.wolframcloud.com/objects/636cf970-0092-4bc1-a812-\
+3a5f82e9189a"],
+    Annotation[#, 
+     "https://www.wolframcloud.com/objects/636cf970-0092-4bc1-a812-\
+3a5f82e9189a", "Hyperlink"]& ], "]"}],
+  CloudObject[
+  "https://www.wolframcloud.com/objects/636cf970-0092-4bc1-a812-3a5f82e9189a"],
+  SelectWithContents->True]], "Output",
+ CellChangeTimes->{3.656532688602103*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"CloudGet", "[", "disputes", "]"}]], "Input",
+ CellChangeTimes->{{3.656514539938655*^9, 3.656514547488223*^9}, {
+  3.656516193429902*^9, 3.656516193982871*^9}, {3.656516256519971*^9, 
+  3.656516257471538*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\[LeftAssociation]", 
+   RowBox[{
+    RowBox[{"\<\"id\"\>", "\[Rule]", "1"}], ",", 
+    RowBox[{"\<\"NameA\"\>", "\[Rule]", "\<\"Avery\"\>"}], ",", 
+    RowBox[{"\<\"NameB\"\>", "\[Rule]", "\<\"Ames\"\>"}], ",", 
+    RowBox[{"\<\"DescA\"\>", "\[Rule]", "\<\"Avocado\"\>"}], ",", 
+    RowBox[{"\<\"DescB\"\>", "\[Rule]", "\<\"Abeergeen\"\>"}], ",", 
+    RowBox[{"\<\"NameM\"\>", "\[Rule]", "\<\"Placeholder\"\>"}]}], 
+   "\[RightAssociation]"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.656514549405859*^9, 3.6565146431680317`*^9, 3.656515250112571*^9, 
+   3.656515402399268*^9, 3.656516069815804*^9, 3.6565161307132072`*^9, {
+   3.656516167775877*^9, 3.656516194686961*^9}, {3.656516249487384*^9, 
+   3.656516259071492*^9}, 3.6565207296077137`*^9, 3.656521438003749*^9, 
+   3.656532516275769*^9, 3.6565326887318497`*^9, 3.6565327525359297`*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Run", "Section",
+ CellChangeTimes->{{3.656520988881674*^9, 3.656520990648982*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Button", "[", 
+   RowBox[{"\"\<Init\>\"", ",", " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"dataObject", "=", 
+       RowBox[{"CloudPut", "[", 
+        RowBox[{"{", "}"}], "]"}]}], ";", 
+      RowBox[{"disputes", "=", 
+       RowBox[{"CloudPut", "[", 
+        RowBox[{"{", "}"}], "]"}]}], ";", 
+      RowBox[{"counter", "=", 
+       RowBox[{"CloudPut", "[", "0", "]"}]}]}], ")"}]}], "]"}], 
+  "\[IndentingNewLine]"}]], "Input",
+ CellChangeTimes->{{3.656520991615171*^9, 3.656521072688439*^9}, {
+  3.656521110088902*^9, 3.656521125263422*^9}, {3.656521162876981*^9, 
+  3.656521165348795*^9}, {3.656521243922613*^9, 3.656521276554756*^9}, {
+  3.656531619403131*^9, 3.656531647192561*^9}}],
+
+Cell[BoxData[
+ ButtonBox["\<\"Init\"\>",
+  Appearance->Automatic,
+  ButtonFunction:>($CellContext`dataObject = 
+    CloudPut[{}]; $CellContext`disputes = CloudPut[{}]; $CellContext`counter = 
+    CloudPut[0]),
+  Evaluator->Automatic,
+  Method->"Preemptive"]], "Output",
+ CellChangeTimes->{3.656521283213044*^9, 3.656531707965035*^9, 
+  3.656532516325473*^9, 3.6565326887542887`*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Scrap", "Section",
+ CellChangeTimes->{{3.6565165913288517`*^9, 3.656516591992243*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"list1", "=", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"<|", 
+     RowBox[{"\"\<id\>\"", "\[Rule]", " ", "1"}], "|>"}], ",", " ", 
+    RowBox[{"<|", 
+     RowBox[{"\"\<id\>\"", "\[Rule]", "2"}], "|>"}]}], "}"}]}]], "Input",
+ CellChangeTimes->{{3.656516596062222*^9, 3.656516617583817*^9}, {
+  3.656516854139345*^9, 3.656516928184889*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{"\<\"id\"\>", "\[Rule]", "1"}], "\[RightAssociation]"}], ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{"\<\"id\"\>", "\[Rule]", "2"}], "\[RightAssociation]"}]}], 
+  "}"}]], "Output",
+ CellChangeTimes->{3.656516618791966*^9, 3.656516929185006*^9, 
+  3.656532516359857*^9, 3.656532688798864*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Select", "[", 
+  RowBox[{
+   RowBox[{"CloudGet", "[", "disputes", "]"}], ",", 
+   RowBox[{"Function", "[", 
+    RowBox[{
+     RowBox[{"{", "x", "}"}], ",", 
+     RowBox[{
+      RowBox[{"x", "[", 
+       RowBox[{"[", "\"\<id\>\"", "]"}], "]"}], "\[Equal]", "3"}]}], "]"}]}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.6565166224911003`*^9, 3.65651666140793*^9}, {
+  3.656516755706748*^9, 3.656516841499411*^9}, {3.656516898529687*^9, 
+  3.656516901841318*^9}, {3.656516935545043*^9, 3.656516940288685*^9}, {
+  3.656520741981567*^9, 3.656520760043096*^9}, {3.65652084960065*^9, 
+  3.656520866398665*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Output",
+ CellChangeTimes->{
+  3.6565166662965803`*^9, 3.6565167798843613`*^9, {3.656516824220948*^9, 
+   3.656516843128108*^9}, {3.656516904209188*^9, 3.656516941006694*^9}, {
+   3.656520750662477*^9, 3.6565207613082247`*^9}, {3.65652086308005*^9, 
+   3.6565208673585253`*^9}, 3.6565214327059593`*^9, 3.656532516481607*^9, 
+   3.656532688944646*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"CloudGet", "[", "disputes", "]"}], "[", 
+    RowBox[{"[", "1", "]"}], "]"}], "[", 
+   RowBox[{"[", "\"\<id\>\"", "]"}], "]"}], "\[IndentingNewLine]"}]], "Input",\
+
+ CellChangeTimes->{{3.6565207801573668`*^9, 3.65652083866311*^9}, 
+   3.65652142838474*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Part", "::", "partw"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Part \[NoBreak]\\!\\(\\*RowBox[{\\\"1\\\"}]\\)\[NoBreak] \
+of \[NoBreak]\\!\\(\\*RowBox[{\\\"{\\\", \\\"}\\\"}]\\)\[NoBreak] does not \
+exist. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
+ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/General/partw\\\", ButtonNote -> \
+\\\"Part::partw\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.6565325166964483`*^9, 3.65653268911553*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Part", "::", "pspec1"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Part specification \
+\[NoBreak]\\!\\(\\*RowBox[{\\\"\\\\\\\"id\\\\\\\"\\\"}]\\)\[NoBreak] is not \
+applicable. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
+ButtonStyle->\\\"Link\\\", ButtonFrame->None, ButtonData:>\\\"paclet:ref/Part\
+\\\", ButtonNote -> \\\"Part::pspec1\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.6565325166964483`*^9, 3.656532689175612*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"{", "}"}], "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}],
+   "\[LeftDoubleBracket]", "\<\"id\"\>", "\[RightDoubleBracket]"}]], "Output",\
+
+ CellChangeTimes->{3.656520795628442*^9, 3.656520841399044*^9, 
+  3.656532516777276*^9, 3.656532689178913*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"d2", " ", "=", " ", 
+  RowBox[{"RandomReal", "[", "]"}]}]], "Input",
+ CellChangeTimes->{{3.656529405698761*^9, 3.656529410742486*^9}, {
+  3.656529477502452*^9, 3.65652950011068*^9}}],
+
+Cell[BoxData["0.5469849199424117`"], "Output",
+ CellChangeTimes->{{3.656529494254167*^9, 3.656529501443358*^9}, 
+   3.6565326892190523`*^9}]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{Full, Full},
+WindowMargins->{{362, Automatic}, {Automatic, 43}},
+FrontEndVersion->"10.3 for Mac OS X x86 (32-bit, 64-bit Kernel) (October 13, \
+2015)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[583, 22, 45, 1, 92, "Title",
+ CellID->1],
+Cell[631, 25, 64, 1, 51, "Subtitle",
+ CellID->2],
+Cell[698, 28, 51, 1, 30, "Text",
+ CellID->11],
+Cell[CellGroupData[{
+Cell[774, 33, 92, 2, 28, "Input",
+ CellID->4],
+Cell[869, 37, 1080, 29, 31, "Output"]
+}, Open  ]],
+Cell[1964, 69, 72, 1, 30, "Text",
+ CellID->13],
+Cell[2039, 72, 500, 15, 28, "Input",
+ CellID->14],
+Cell[CellGroupData[{
+Cell[2564, 91, 449, 7, 46, "Input",
+ CellID->231],
+Cell[3016, 100, 100, 1, 21, "Print"]
+}, Open  ]],
+Cell[3131, 104, 82, 1, 30, "Text",
+ CellID->506],
+Cell[CellGroupData[{
+Cell[3238, 109, 805, 21, 28, "Input",
+ CellID->489],
+Cell[4046, 132, 660, 17, 28, "Output"]
+}, Open  ]],
+Cell[4721, 152, 46, 1, 30, "Text",
+ CellID->510],
+Cell[CellGroupData[{
+Cell[4792, 157, 87, 2, 28, "Input",
+ CellID->495],
+Cell[4882, 161, 1104, 29, 31, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6023, 195, 107, 3, 46, "Input",
+ CellID->537],
+Cell[6133, 200, 1057, 28, 31, "Output"]
+}, Open  ]],
+Cell[7205, 231, 52, 1, 30, "Text",
+ CellID->508],
+Cell[CellGroupData[{
+Cell[7282, 236, 79, 2, 28, "Input",
+ CellID->584],
+Cell[7364, 240, 157, 3, 28, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7558, 248, 106, 2, 64, "Section",
+ CellID->512],
+Cell[7667, 252, 98, 1, 30, "Text"],
+Cell[CellGroupData[{
+Cell[7790, 257, 227, 5, 28, "Input"],
+Cell[8020, 264, 1125, 29, 31, "Output"]
+}, Open  ]],
+Cell[9160, 296, 103, 1, 30, "Text"],
+Cell[CellGroupData[{
+Cell[9288, 301, 162, 3, 28, "Input"],
+Cell[9453, 306, 1079, 29, 31, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10569, 340, 204, 4, 28, "Input"],
+Cell[10776, 346, 1103, 29, 31, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[11916, 380, 438, 13, 28, "Input"],
+Cell[12357, 395, 398, 12, 28, "Output"]
+}, Open  ]],
+Cell[12770, 410, 222, 3, 30, "Text"],
+Cell[12995, 415, 102, 1, 30, "Text"],
+Cell[CellGroupData[{
+Cell[13122, 420, 2393, 46, 97, "Input"],
+Cell[15518, 468, 224, 3, 22, "Print"]
+}, Open  ]],
+Cell[15757, 474, 105, 1, 30, "Text"],
+Cell[15865, 477, 1803, 42, 80, "Input"],
+Cell[17671, 521, 92, 1, 28, "Input"],
+Cell[17766, 524, 174, 5, 49, "Text"],
+Cell[CellGroupData[{
+Cell[17965, 533, 964, 21, 114, "Input"],
+Cell[18932, 556, 656, 17, 28, "Output"]
+}, Open  ]],
+Cell[19603, 576, 164, 5, 49, "Text"],
+Cell[19770, 583, 1777, 39, 46, "Input"],
+Cell[CellGroupData[{
+Cell[21572, 626, 227, 5, 28, "Input"],
+Cell[21802, 633, 1610, 45, 320, "Output"]
+}, Open  ]],
+Cell[23427, 681, 99, 1, 30, "Text"],
+Cell[CellGroupData[{
+Cell[23551, 686, 244, 4, 28, "Input"],
+Cell[23798, 692, 1126, 29, 31, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[24961, 726, 77, 1, 28, "Input"],
+Cell[25041, 729, 1106, 29, 31, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[26184, 763, 1056, 28, 31, "Input"],
+Cell[27243, 793, 1057, 28, 31, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[28337, 826, 194, 3, 28, "Input"],
+Cell[28534, 831, 1057, 28, 31, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[29628, 864, 1060, 28, 31, "Input"],
+Cell[30691, 894, 1033, 28, 31, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[31761, 927, 232, 4, 28, "Input"],
+Cell[31996, 933, 885, 16, 28, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[32930, 955, 88, 1, 64, "Section"],
+Cell[CellGroupData[{
+Cell[33043, 960, 729, 18, 46, "Input"],
+Cell[33775, 980, 382, 9, 43, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[34206, 995, 92, 1, 64, "Section"],
+Cell[CellGroupData[{
+Cell[34323, 1000, 361, 9, 28, "Input"],
+Cell[34687, 1011, 385, 9, 28, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[35109, 1025, 625, 15, 28, "Input"],
+Cell[35737, 1042, 387, 7, 28, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[36161, 1054, 315, 9, 46, "Input"],
+Cell[36479, 1065, 542, 11, 24, "Message"],
+Cell[37024, 1078, 494, 10, 24, "Message"],
+Cell[37521, 1090, 305, 7, 28, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[37863, 1102, 206, 4, 28, "Input"],
+Cell[38072, 1108, 140, 2, 28, "Output"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+
