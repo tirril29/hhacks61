@@ -1,0 +1,61 @@
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[         0,          0]
+NotebookDataLength[      1689,         60]
+NotebookOptionsPosition[      1209,         36]
+NotebookOutlinePosition[      1565,         52]
+CellTagsIndexPosition[      1522,         49]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+ RowBox[{"SendMail", "[", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"\"\<To\>\"", "\[Rule]", " ", "\"\<alaw@bu.edu\>\""}], ",", " ", 
+    RowBox[{
+    "\"\<subject\>\"", "\[Rule]", " ", "\"\<something something\>\""}], ",", 
+    RowBox[{"\"\<body\>\"", "\[Rule]", " ", "\"\<ur a faget\>\""}]}], "}"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.656531886296216*^9, 3.656531890917571*^9}, {
+  3.6565319563945847`*^9, 3.656531961154748*^9}, {3.656532017423715*^9, 
+  3.656532102792822*^9}, {3.656532147810313*^9, 3.656532175532687*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"MessageID\"\>", 
+   "\[Rule]", "\<\"30717858869493615956.1.WolframLanguage.8evZgLr4\"\>"}], 
+  "}"}]], "Output",
+ CellChangeTimes->{3.656532112859573*^9, 3.6565321783516827`*^9}]
+}, Open  ]]
+},
+WindowSize->{808, 626},
+WindowMargins->{{12, Automatic}, {Automatic, 24}},
+FrontEndVersion->"10.3 for Mac OS X x86 (32-bit, 64-bit Kernel) (October 9, \
+2015)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[422, 15, 546, 11, 46, "Input"],
+Cell[971, 28, 222, 5, 62, "Output"]
+}, Open  ]]
+}
+]
+*)
+
